@@ -1,0 +1,33 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+const registry=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const [core,output,revision]=process.argv.slice(2);
+if(!core||!output||!/^[a-f0-9]{40}$/.test(revision??''))throw Error('Usage: node tools/package-n8n.mjs CORE_DIRECTORY OUTPUT REGISTRY_COMMIT');
+const run=(cmd,args,options={})=>{const r=spawnSync(cmd,args,{encoding:'utf8',maxBuffer:16*1024*1024,...options});if(r.status!==0)throw Error(cmd+' failed; no package accepted.');return r.stdout.trim();};
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const lock=JSON.parse(run('git',['show',revision+':sources.lock.json'],{cwd:registry}));
+const entry=lock.sources.find(item=>item.name==='n8n-automation');
+if(!entry||entry.version!=='0.1.1'||lock.repository!=='https://github.com/micelclaw/registry')throw Error('Unknown source release.');
+const archive=path.join(output,`n8n-automation-${entry.version}-source.tar.gz`),bytes=await fs.readFile(archive);
+if(sha(bytes)!==entry.source.sha256||bytes.length!==entry.source.bytes)throw Error('Source differs from reviewed source lock.');
+const target=path.join(output,`n8n-automation-${entry.version}.claw`);let accepted=false;
+if(await fs.stat(target).catch(()=>null))throw Error('Refusing to overwrite a package.');
+const stage=await fs.mkdtemp(path.join(os.tmpdir(),'registry-n8n-package-'));
+try{
+ run('tar',['-xzf',archive,'-C',stage]);
+ const manifest=JSON.parse(await fs.readFile(path.join(stage,'manifest.template.json'),'utf8'));
+ manifest.repository={url:lock.repository,revision};manifest.source_url=entry.source.url;
+ await fs.mkdir(path.join(stage,'ui/dist'),{recursive:true});await fs.copyFile(path.join(stage,'launcher.html'),path.join(stage,'ui/dist/index.html'));
+ await fs.writeFile(path.join(stage,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+ await fs.copyFile(archive,path.join(stage,'corresponding-source.tar.gz'));
+ await fs.writeFile(path.join(stage,'SOURCE.json'),JSON.stringify({repository:manifest.repository,source_url:entry.source.url,archive:'corresponding-source.tar.gz',sha256:entry.source.sha256,export:entry.export},null,2)+'\n');
+ const runner=path.join(stage,'pack.mts');
+ const module=file=>JSON.stringify(pathToFileURL(path.resolve(core,file)).href);
+ await fs.writeFile(runner,`import fs from 'node:fs/promises';import{packApp,unpackApp}from ${module('src/apps/claw-packager.ts')};import{SafetyScanner}from ${module('src/apps/safety-scanner.ts')};await fs.rm(${JSON.stringify(runner)});await packApp(${JSON.stringify(stage)},${JSON.stringify(target)});const dest=${JSON.stringify(stage+'/verified')};const u=await unpackApp(${JSON.stringify(target)},dest);const scan=await new SafetyScanner().scanL3(dest,u.manifest);if(!u.checksum_ok||!scan.passed)throw Error('Official package verification failed');`);
+ run(path.join(core,'node_modules/.bin/tsx'),[runner]);accepted=true;
+ console.log('n8n integration package verified; no instance installed or changed.');
+}finally{await fs.rm(stage,{recursive:true,force:true});if(!accepted)await fs.rm(target,{force:true});}

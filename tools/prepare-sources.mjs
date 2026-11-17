@@ -42,7 +42,7 @@ try{
  const bytes=await fs.readFile(archive);
  sources.push({name:'n8n-automation',version:'0.1.1',source:{url:`https://github.com/micelclaw/registry/releases/download/${tag}/${path.basename(archive)}`,sha256:sha(bytes),bytes:bytes.length},export:'Allowlist: launcher, ui/module.tsx, SKILL.md, references, NOTICES, licences, README, manifest template. No workflows/templates/runtime data. Removed local-path comment; public package version/licence metadata generated separately.'});
 }finally{await fs.rm(temp,{recursive:true,force:true});}
-const recipes=[];for(const file of ['tools/package-office.mjs','tools/prepare-sources.mjs','tools/publish-images.py'])recipes.push({path:file,sha256:sha(await fs.readFile(path.join(root,file)))});
-const lock={schema_version:1,repository:'https://github.com/micelclaw/registry',release_tag:tag,recipes,sources};
+const recipes=[];for(const file of ['tools/package-office.mjs','tools/package-n8n.mjs','tools/prepare-sources.mjs','tools/publish-images.py','tools/build-images.mjs'])recipes.push({path:file,sha256:sha(await fs.readFile(path.join(root,file)))});
+const lock={schema_version:1,repository:'https://github.com/micelclaw/registry',release_tag:tag,core_packager_sha256:sha(await fs.readFile(path.join(workspace,'micelclaw-os/core/scripts/package-reviewed-office.mjs'))),recipes,sources};
 await fs.writeFile(path.join(root,'sources.lock.json'),JSON.stringify(lock,null,2)+'\n');
 console.log('Five source archives and their lock prepared. No publication or installation.');
