@@ -6,7 +6,7 @@
   "recipes": [
     {
       "path": "tools/package-office.mjs",
-      "sha256": "1216044648a2206565735a44667d86e25c9541106fd1acda6f112a3aef684971"
+      "sha256": "1ebae0860397d44658d3ee316f7d88a8856ab7dddab2b78b2e97384476ad9450"
     },
     {
       "path": "tools/package-n8n.mjs",
@@ -18,11 +18,19 @@
     },
     {
       "path": "tools/publish-images.py",
-      "sha256": "f2ce219d2a540bf0f88eab7edb187e5024d1378e262b2c99d84530ae6514f396"
+      "sha256": "9d5a88be035e703f0876c464883125141156b0ef5acccb703c86d92fbc06e872"
     },
     {
       "path": "tools/build-images.mjs",
       "sha256": "316abfd1a242c305f4a2dc713271b8d13cf082319d08741a3268764421de3ece"
+    },
+    {
+      "path": "tools/registry_auth.py",
+      "sha256": "a9905eabc5f3b8e8c22be2513375b4dc897a4c42ac946eb47f2cc6dcda63c3de"
+    },
+    {
+      "path": "tools/configure-publisher.py",
+      "sha256": "b5e3eefdfa5dd084c5fdf77396fb2b7b05c5396c9638e330f530fea5b484383c"
     }
   ],
   "sources": [

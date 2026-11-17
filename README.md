@@ -35,9 +35,31 @@ release asset and its source archive; record their exact hashes and sizes.
 Use HTTPS assets under `micelclaw/registry/releases/download/`. Never include
 credentials, runtime databases, user documents or private Git history.
 
-Publication is performed by an authorised maintainer. `tools/publish-images.py`
-uses a temporary Docker configuration for publishing; installations download
-public images anonymously and do not need registry credentials.
+Publication is performed by the authorised agent/maintainer using a shared
+local publishing profile. Git and Releases use the existing GitHub CLI keyring.
+For GHCR, run `python3 tools/configure-publisher.py` once in a local WSL terminal
+as the normal Windows/WSL user. Enter a classic GitHub token with
+`write:packages` and **No expiration** only at its hidden prompt. The official
+Docker wincred helper stores it encrypted in Windows Credential Manager;
+`~/.config/micelclaw/registry-publisher/` contains only private configuration
+and status metadata. No token is saved in this repository or Core.
+
+All subsequent local agent sessions run `tools/publish-images.py` directly,
+without asking the human to upload images or enter the credential again.
+The current publisher validates the four reviewed Office images; new image
+families require an explicitly reviewed publication recipe. Package/source
+release uploads continue through the authenticated GitHub CLI. A stored
+credential does not authorise unrelated publications. See [AGENTS.md](AGENTS.md)
+for the shared procedure. After an interrupted first login, `configure-publisher.py
+--recover` validates the stored account, scopes and authority before completing
+the profile, without replacing the credential.
+
+No expiration removes scheduled expiry; GitHub can still revoke a token,
+including after a year without use. Installations download public images
+anonymously and do not need registry credentials. The helper is the original
+Docker `docker-credential-helpers` v0.9.13 Windows AMD64 release, pinned by SHA-256
+in `tools/registry_auth.py`; its original MIT licence is retained beside the
+installed binary. It is not included in application packages or images.
 
 ## Corrected Office cuts
 
@@ -48,3 +70,9 @@ an existing version is rejected rather than replaced. The already published
 n8n source entry is retained. The image recipe derives tags from the locked
 version and still requires matching reviewed source/build proofs. This does
 not authorise a build, publish, installation or restart by itself.
+
+`tools/package-office.mjs CORE_DIRECTORY APP BINDING_JSON [REVIEWED_BUILD_PROOF_JSON]`
+accepts an explicit reviewed build proof so a new immutable release cannot
+accidentally consume an earlier release's proof. The official helper still
+validates that proof, the public source lock and the actual image inventory
+before packaging.
