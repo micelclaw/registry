@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "https://github.com/micelclaw/registry",
-  "release_tag": "2026.11.17-office-0.2.1",
+  "release_tag": "2026.11.17-office-0.2.2",
   "core_packager_sha256": "261fba880c4d21caf62bb939d3b672f362d40e0ca95888eefb92075e6a3fe124",
   "recipes": [
     {
@@ -23,58 +23,50 @@
     {
       "path": "tools/build-images.mjs",
       "sha256": "316abfd1a242c305f4a2dc713271b8d13cf082319d08741a3268764421de3ece"
-    },
-    {
-      "path": "tools/registry_auth.py",
-      "sha256": "a9905eabc5f3b8e8c22be2513375b4dc897a4c42ac946eb47f2cc6dcda63c3de"
-    },
-    {
-      "path": "tools/configure-publisher.py",
-      "sha256": "f541c9e0646f1adbb52822c185e12ef6a162cf9e4cc72f1b56d479036543a44c"
     }
   ],
   "sources": [
     {
       "name": "documents",
-      "version": "0.2.1",
-      "source_revision": "17c8e3f66878ddbce56d7eeed4c00e423879d597",
+      "version": "0.2.2",
+      "source_revision": "dcb28e1de2b709fc1d6f6b46d668b1a0d3eca804",
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/documents-0.2.1-source.tar.gz",
-        "sha256": "44d98bf8f88a01e01de12fe9b0743061a4d771e11050be01291b2c2c8ecbafef",
-        "bytes": 15482246
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/documents-0.2.2-source.tar.gz",
+        "sha256": "14ce7c440e6d7398b14e4dce4f79801106571d2933cdbabd67be36bbe24d0e99",
+        "bytes": 15483658
       },
       "export": "Exact reviewed git archive; no Git metadata or history."
     },
     {
       "name": "spreadsheets",
-      "version": "0.2.1",
-      "source_revision": "76f4ff0435c31b6bde4304ac9d3d29c490665688",
+      "version": "0.2.2",
+      "source_revision": "485e5d811451dfbee06d4ee6aa0d558f25ea0e0e",
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/spreadsheets-0.2.1-source.tar.gz",
-        "sha256": "41c229a4f55801dead03fe7ead778fd3871c2399b7bf7a145a158aa0af4e838f",
-        "bytes": 20523310
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/spreadsheets-0.2.2-source.tar.gz",
+        "sha256": "1edff5aa2e975d4228b5a2b279e6c291f087ccdc9f569269bbfbbc0889f2baae",
+        "bytes": 20525054
       },
       "export": "Exact reviewed git archive; no Git metadata or history."
     },
     {
       "name": "presentations",
-      "version": "0.2.1",
-      "source_revision": "83249cc68d4143886d50d67b7ffb6f7f8452205b",
+      "version": "0.2.2",
+      "source_revision": "662c8ca6ee7b1c70955f104493e4cd62dec43ead",
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/presentations-0.2.1-source.tar.gz",
-        "sha256": "1c809bfa2af038a91b45c50119ee1c491aac4a0e36449a5b9f66e86908b78f2c",
-        "bytes": 9035962
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/presentations-0.2.2-source.tar.gz",
+        "sha256": "1b4581bd24160a12c3e759936bbab05541936020702e60ea30bc6fbe61b98c41",
+        "bytes": 9037663
       },
       "export": "Exact reviewed git archive; no Git metadata or history."
     },
     {
       "name": "pdf",
-      "version": "0.2.1",
-      "source_revision": "16f3f334c87035fd38a5c99b863454b78bf89554",
+      "version": "0.2.2",
+      "source_revision": "15ecd7d329c1bea90e0eb3baab41229632f7f32e",
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/pdf-0.2.1-source.tar.gz",
-        "sha256": "87ab702e24b3030648b840e1db6ffc72cdc0741f38b2c391843967a441bafe0e",
-        "bytes": 48304316
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/pdf-0.2.2-source.tar.gz",
+        "sha256": "2346c49cf739d5557ec2bc8d00e2a224bca2aff011925870b213a073f03e85e5",
+        "bytes": 48307785
       },
       "export": "Exact reviewed git archive; no Git metadata or history."
     },
