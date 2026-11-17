@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -75,6 +76,27 @@ def public_manifest(image, digest):
         return False
 
 
+def validate_image_versions(images):
+    """Only tags/source revisions recorded in real registry commits are allowed."""
+    registry = Path(__file__).resolve().parent.parent
+    locks = {}
+    for image in images:
+        revision = image.get("registry_revision", "")
+        if not re.fullmatch(r"[a-f0-9]{40}", revision):
+            raise SystemExit("A real registry source-lock revision is required.")
+        if revision not in locks:
+            result = run(["git", "show", revision + ":sources.lock.json"], cwd=registry, capture_output=True, text=True)
+            locks[revision] = json.loads(result.stdout)
+        lock = locks[revision]
+        source = next((source for source in lock.get("sources", []) if source["name"] == image["app"]), None)
+        if (lock.get("schema_version") != 1 or lock.get("repository") != "https://github.com/micelclaw/registry"
+                or not source or image.get("tag") != source["version"]
+                or image.get("source_revision") != source.get("source_revision")
+                or image.get("repository") != "ghcr.io/micelclaw/office-" + image["app"]
+                or not re.fullmatch(r"sha256:[a-f0-9]{64}", image.get("local_id", ""))):
+            raise SystemExit("Publication destination/version/source differs from the reviewed source lock.")
+
+
 def main():
     if os.geteuid() == 0:
         raise SystemExit("Run as your normal publishing user, not through sudo or a root shell.")
@@ -88,9 +110,8 @@ def main():
     expected = {"documents", "spreadsheets", "presentations", "pdf"}
     if {image["app"] for image in images} != expected or len(images) != 4:
         raise SystemExit("Exactly the four approved Office images are required.")
+    validate_image_versions(images)
     for image in images:
-        if image["repository"] != "ghcr.io/micelclaw/office-" + image["app"] or image["tag"] != "0.2.0":
-            raise SystemExit("Unexpected publication destination.")
         info = run(["docker", "image", "inspect", "--format", "{{.Id}}", image["local_id"]], capture_output=True, text=True).stdout.strip()
         if info != image["local_id"]:
             raise SystemExit("Reviewed image changed.")

@@ -38,3 +38,13 @@ credentials, runtime databases, user documents or private Git history.
 Publication is performed by an authorised maintainer. `tools/publish-images.py`
 uses a temporary Docker configuration for publishing; installations download
 public images anonymously and do not need registry credentials.
+
+## Corrected Office cuts
+
+Pass an optional `REVIEWED_CUTS_JSON` to `tools/prepare-sources.mjs` after
+`WORKSPACE OUTPUT RELEASE_TAG`. It maps the four Office app names to their
+actual reviewed commits. Each commit must contain a new application version;
+an existing version is rejected rather than replaced. The already published
+n8n source entry is retained. The image recipe derives tags from the locked
+version and still requires matching reviewed source/build proofs. This does
+not authorise a build, publish, installation or restart by itself.

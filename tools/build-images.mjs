@@ -22,7 +22,8 @@ for(const source of lock.sources.filter(s=>['documents','spreadsheets','presenta
  await walk('ui');await walk('runtime');
  if(sha(JSON.stringify(artifacts.sort((a,b)=>a[0].localeCompare(b[0]))))!==proof.artifacts_sha256)throw Error('Prepared UI/runtime changed; no rebuild by inference.');
  const inputs=sha(JSON.stringify({source:source.source.sha256,artifacts:proof.artifacts_sha256,revision,base}));
- const tag=`micelclaw-registry-office-${source.name}:0.2.0-${revision.slice(0,12)}`;
+ if(!/^\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?$/.test(source.version))throw Error('Invalid locked application version.');
+ const tag=`micelclaw-registry-office-${source.name}:${source.version}-${revision.slice(0,12)}`;
  const prior=spawnSync('docker',['image','inspect',tag,'--format','{{json .}}'],{encoding:'utf8'});
  let image;
  if(prior.status===0){
@@ -41,7 +42,7 @@ for(const source of lock.sources.filter(s=>['documents','spreadsheets','presenta
    image=run('docker',['image','inspect',tag,'--format','{{.Id}}']);
   }finally{await fs.rm(context,{recursive:true,force:true});}
  }
- images.push({app:source.name,repository:'ghcr.io/micelclaw/office-'+source.name,tag:'0.2.0',local_id:image,local_tag:tag,inputs_sha256:inputs,source_revision:source.source_revision,registry_revision:revision});
+ images.push({app:source.name,repository:'ghcr.io/micelclaw/office-'+source.name,tag:source.version,local_id:image,local_tag:tag,inputs_sha256:inputs,source_revision:source.source_revision,registry_revision:revision});
  await fs.writeFile(path.join(output,'images.json'),JSON.stringify({schema_version:1,registry:'https://github.com/micelclaw/registry',publisher:'Titunito',base_image:base,images},null,2)+'\n');
  console.log(source.name+': current image prepared, no workers or Core started.');
 }
