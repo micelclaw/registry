@@ -4,11 +4,27 @@ Review and correction notice: **17 November 2026**. This page distinguishes
 verified provenance from outstanding distribution requirements. Public access
 to a package is not a statement that every licensing obligation has been met.
 
+## Office 0.2.3 sources
+
+[Office 0.2.3](https://github.com/micelclaw/registry/releases/tag/2026.11.17-office-0.2.3)
+contains the current four packages and their exact modified application sources.
+[The immutable 0.2.3 source lock](https://github.com/micelclaw/registry/blob/da59adac5846183aef5592868e4c7e4cb2b15110/sources.lock.json)
+records real source revisions, archive hashes and packaging recipes. Each package's
+manifest, `SOURCE.json` and generated runtime inventory agree on the actual
+registry/source/image binding. The two obsolete inventory fields described in
+the historical 0.2.2 erratum below are corrected in 0.2.3.
+
+Original licences, attribution and component notices are retained. Binary
+versions and components match the already reviewed inventories; the source
+availability and qualifications below still apply. This update is not a legal
+compliance verdict or installed-product acceptance. Historical releases and the
+n8n integration remain unchanged.
+
 ## Office 0.2.2 provenance notice
 
 [Office 0.2.2](https://github.com/micelclaw/registry/releases/tag/2026.11.17-office-0.2.2)
-provides the current four exact application sources and packages. The current
-[sources.lock.json](sources.lock.json) binds their real revisions, hashes and
+provides the historical four application sources and packages.
+[The immutable 0.2.2 source lock](https://github.com/micelclaw/registry/blob/5f51ee7fb93122b06195f921d2ce2560d82114f7/sources.lock.json) binds their real revisions, hashes and
 public images; licensing scopes and outstanding qualifications below remain.
 
 **Metadata erratum:** two informational fields in each package's

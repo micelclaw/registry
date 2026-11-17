@@ -14,6 +14,10 @@ const display = { schema_version: 1, packages: [] };
 const officeColors = { documents: '#3b82f6', spreadsheets: '#22c55e', presentations: '#eab308', pdf: '#ef4444' };
 // Owner-approved editorial labels, 17 November 2026. New names, versions or bytes need a new explicit decision.
 const approvedDistinctions = new Map([
+  ["documents@0.2.3", "cde7462d8cbd524b81661b6b8f8c07196b01dd3443302b73a36a5679cd3b5369"],
+  ["spreadsheets@0.2.3", "5e7314828d3b920ff5b2e01f4921da945ac29d93a57040979648596e0bb88492"],
+  ["presentations@0.2.3", "80d7d69e85626d04a59bbaf08cb721c56ef84f1ab6dfc20077ddfc1fa5e9c53c"],
+  ["pdf@0.2.3", "de34d858baee0eb711fff194dc2386c3a2a8eddc2f5e9878f75e3b95da3a8599"],
   ["documents@0.2.2", "5eb63a0aca0addee84e5e01cd95c26fa6a4123e92f3101834ea2cf883907999a"],
   ["spreadsheets@0.2.2", "8536cfd12b15bcc5ba0c6dbd63bf708ab8e22cfc5976422ead5854485b1f522e"],
   ["presentations@0.2.2", "f676f518a1a57f31a10221cee510d71c9f13f733b29bed240e68a3ef6f1e9a22"],

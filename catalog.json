@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "documents",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "display_name": "Documents",
       "description": "Documents para Drive de Micelclaw",
       "app_level": 3,
@@ -15,22 +15,22 @@
       ],
       "repository": {
         "url": "https://github.com/micelclaw/registry",
-        "revision": "5f51ee7fb93122b06195f921d2ce2560d82114f7"
+        "revision": "da59adac5846183aef5592868e4c7e4cb2b15110"
       },
       "package": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/documents-0.2.2.claw",
-        "sha256": "5eb63a0aca0addee84e5e01cd95c26fa6a4123e92f3101834ea2cf883907999a",
-        "bytes": 28245628
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/documents-0.2.3.claw",
+        "sha256": "cde7462d8cbd524b81661b6b8f8c07196b01dd3443302b73a36a5679cd3b5369",
+        "bytes": 28254473
       },
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/documents-0.2.2-source.tar.gz",
-        "sha256": "14ce7c440e6d7398b14e4dce4f79801106571d2933cdbabd67be36bbe24d0e99",
-        "bytes": 15483658
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/documents-0.2.3-source.tar.gz",
+        "sha256": "13a1b652bdc758b6fe76c8c781397229dc2f01ff3a127a6e1ce6b8a442fd355d",
+        "bytes": 15485312
       }
     },
     {
       "name": "spreadsheets",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "display_name": "Spreadsheets",
       "description": "Spreadsheets para Drive de Micelclaw",
       "app_level": 3,
@@ -42,22 +42,22 @@
       ],
       "repository": {
         "url": "https://github.com/micelclaw/registry",
-        "revision": "5f51ee7fb93122b06195f921d2ce2560d82114f7"
+        "revision": "da59adac5846183aef5592868e4c7e4cb2b15110"
       },
       "package": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/spreadsheets-0.2.2.claw",
-        "sha256": "8536cfd12b15bcc5ba0c6dbd63bf708ab8e22cfc5976422ead5854485b1f522e",
-        "bytes": 27776155
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/spreadsheets-0.2.3.claw",
+        "sha256": "5e7314828d3b920ff5b2e01f4921da945ac29d93a57040979648596e0bb88492",
+        "bytes": 27803087
       },
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/spreadsheets-0.2.2-source.tar.gz",
-        "sha256": "1edff5aa2e975d4228b5a2b279e6c291f087ccdc9f569269bbfbbc0889f2baae",
-        "bytes": 20525054
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/spreadsheets-0.2.3-source.tar.gz",
+        "sha256": "bf869d53770462ab0dc37e0ab40503a42b21643c1d6ad7071403d0ead5022364",
+        "bytes": 20528882
       }
     },
     {
       "name": "presentations",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "display_name": "Presentations",
       "description": "Presentations para Drive de Micelclaw",
       "app_level": 3,
@@ -69,22 +69,22 @@
       ],
       "repository": {
         "url": "https://github.com/micelclaw/registry",
-        "revision": "5f51ee7fb93122b06195f921d2ce2560d82114f7"
+        "revision": "da59adac5846183aef5592868e4c7e4cb2b15110"
       },
       "package": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/presentations-0.2.2.claw",
-        "sha256": "f676f518a1a57f31a10221cee510d71c9f13f733b29bed240e68a3ef6f1e9a22",
-        "bytes": 13286172
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/presentations-0.2.3.claw",
+        "sha256": "80d7d69e85626d04a59bbaf08cb721c56ef84f1ab6dfc20077ddfc1fa5e9c53c",
+        "bytes": 13285848
       },
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/presentations-0.2.2-source.tar.gz",
-        "sha256": "1b4581bd24160a12c3e759936bbab05541936020702e60ea30bc6fbe61b98c41",
-        "bytes": 9037663
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/presentations-0.2.3-source.tar.gz",
+        "sha256": "182eb24a7d4cf7391266257f31147b00ca046cd6070bd0caf9ac3a03a1997f26",
+        "bytes": 9040317
       }
     },
     {
       "name": "pdf",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "display_name": "PDF",
       "description": "PDF para Drive de Micelclaw",
       "app_level": 3,
@@ -96,17 +96,17 @@
       ],
       "repository": {
         "url": "https://github.com/micelclaw/registry",
-        "revision": "5f51ee7fb93122b06195f921d2ce2560d82114f7"
+        "revision": "da59adac5846183aef5592868e4c7e4cb2b15110"
       },
       "package": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/pdf-0.2.2.claw",
-        "sha256": "ddfd2b36dc58cc91cf94d691314e1f730100316167adff1f4c02aea2acfc77a7",
-        "bytes": 92301765
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/pdf-0.2.3.claw",
+        "sha256": "de34d858baee0eb711fff194dc2386c3a2a8eddc2f5e9878f75e3b95da3a8599",
+        "bytes": 92295053
       },
       "source": {
-        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/pdf-0.2.2-source.tar.gz",
-        "sha256": "2346c49cf739d5557ec2bc8d00e2a224bca2aff011925870b213a073f03e85e5",
-        "bytes": 48307785
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.3/pdf-0.2.3-source.tar.gz",
+        "sha256": "2de75b488e6c10bd061703d84f7446c907ef437d81ec576b25d62fb181568197",
+        "bytes": 48308382
       }
     },
     {

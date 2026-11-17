@@ -3,8 +3,8 @@
   "packages": [
     {
       "name": "documents",
-      "version": "0.2.2",
-      "package_sha256": "5eb63a0aca0addee84e5e01cd95c26fa6a4123e92f3101834ea2cf883907999a",
+      "version": "0.2.3",
+      "package_sha256": "cde7462d8cbd524b81661b6b8f8c07196b01dd3443302b73a36a5679cd3b5369",
       "author": "Micelclaw · Puter Technologies Inc.",
       "origin": "Micelclaw",
       "tier_required": "free",
@@ -18,8 +18,8 @@
     },
     {
       "name": "spreadsheets",
-      "version": "0.2.2",
-      "package_sha256": "8536cfd12b15bcc5ba0c6dbd63bf708ab8e22cfc5976422ead5854485b1f522e",
+      "version": "0.2.3",
+      "package_sha256": "5e7314828d3b920ff5b2e01f4921da945ac29d93a57040979648596e0bb88492",
       "author": "Micelclaw · Puter Technologies Inc.",
       "origin": "Micelclaw",
       "tier_required": "free",
@@ -33,8 +33,8 @@
     },
     {
       "name": "presentations",
-      "version": "0.2.2",
-      "package_sha256": "f676f518a1a57f31a10221cee510d71c9f13f733b29bed240e68a3ef6f1e9a22",
+      "version": "0.2.3",
+      "package_sha256": "80d7d69e85626d04a59bbaf08cb721c56ef84f1ab6dfc20077ddfc1fa5e9c53c",
       "author": "Micelclaw · Puter Technologies Inc.",
       "origin": "Micelclaw",
       "tier_required": "free",
@@ -48,8 +48,8 @@
     },
     {
       "name": "pdf",
-      "version": "0.2.2",
-      "package_sha256": "ddfd2b36dc58cc91cf94d691314e1f730100316167adff1f4c02aea2acfc77a7",
+      "version": "0.2.3",
+      "package_sha256": "de34d858baee0eb711fff194dc2386c3a2a8eddc2f5e9878f75e3b95da3a8599",
       "author": "Micelclaw · Puter Technologies Inc.",
       "origin": "Micelclaw",
       "tier_required": "free",
