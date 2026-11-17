@@ -1,4 +1,32 @@
 {
   "schema_version": 1,
-  "packages": []
+  "packages": [
+    {
+      "name": "n8n-automation",
+      "version": "0.1.1",
+      "display_name": "n8n",
+      "description": "Managed n8n integration for Micelclaw; server, workflows and data are not bundled.",
+      "app_level": 3,
+      "license": "BUSL-1.1 AND MIT AND Apache-2.0",
+      "keywords": [
+        "automation",
+        "workflows",
+        "n8n"
+      ],
+      "repository": {
+        "url": "https://github.com/micelclaw/registry",
+        "revision": "fd8f5005b43a6ec981a2888545971660f3de59e4"
+      },
+      "package": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/n8n-automation-0.1.1.claw",
+        "sha256": "217fad4458d1fb4a6f122c7e544abdeafe90ec4aa18d9ba3c0efb3ee5010b82d",
+        "bytes": 154314
+      },
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/n8n-automation-0.1.1-source.tar.gz",
+        "sha256": "b9229b9d85f3423ef8add7cf533c995c1a15abcfe84be565c0496fb67fb48117",
+        "bytes": 74034
+      }
+    }
+  ]
 }

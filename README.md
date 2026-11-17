@@ -17,7 +17,10 @@ Core; no n8n templates are included in this package.
 
 See [licences, modified sources and correction status](LICENSING.md) before
 redistributing Office. The initial Office release is still under correction and
-has not completed installed-product acceptance.
+has not completed installed-product acceptance. The current discoverable
+entry is n8n. The four Office release assets remain public, with their
+licence correction notice, while corrected immutable packages are prepared;
+they will enter the catalogue after that correction.
 
 ## Installing
 
