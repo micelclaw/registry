@@ -15,6 +15,10 @@ The n8n entry distributes the Micelclaw integration, not the n8n server, user
 workflows, credentials or data. Its native services are provided by Micelclaw
 Core; no n8n templates are included in this package.
 
+See [licences, modified sources and correction status](LICENSING.md) before
+redistributing Office. The initial Office release is still under correction and
+has not completed installed-product acceptance.
+
 ## Installing
 
 In MicelHub → Registry, search, add the package to the local registry, then use

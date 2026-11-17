@@ -17,7 +17,7 @@
     },
     {
       "path": "tools/publish-images.py",
-      "sha256": "6521e3c61b714c3c6403531d21d05994935dabb3b3a9bfd996641ec4adc432a6"
+      "sha256": "cff28c249159ba557d24e4cb089d37b3e1eb4e2e396f534ec4435c4f0ded329d"
     },
     {
       "path": "tools/build-images.mjs",

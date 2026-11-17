@@ -25,6 +25,39 @@ def run(args, **kwargs):
     return result
 
 
+def publisher_packages(secret, expected_login):
+    """Organisation owner inventory: an API error is never an absent package."""
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, request, fp, code, message, headers, new_url):
+            return None
+    opener = urllib.request.build_opener(NoRedirect())
+    def read(endpoint):
+        request = urllib.request.Request("https://api.github.com/" + endpoint,
+            headers={"Authorization": "Bearer " + secret, "Accept": "application/vnd.github+json"})
+        with opener.open(request, timeout=30) as response:
+            return json.load(response)
+    if read("user").get("login") != expected_login:
+        raise SystemExit("Publishing credential belongs to a different account.")
+    account = subprocess.run(["gh.exe", "api", "user", "--jq", ".login"], capture_output=True, text=True)
+    if account.returncode or account.stdout.strip() != expected_login:
+        raise SystemExit("The existing GitHub CLI account differs from the publisher.")
+    authority = subprocess.run(["gh.exe", "api", "user/memberships/orgs/micelclaw"], capture_output=True, text=True)
+    if authority.returncode:
+        raise SystemExit("Organisation ownership could not be verified; no push performed.")
+    membership = json.loads(authority.stdout)
+    if membership.get("role") != "admin" or membership.get("state") != "active":
+        raise SystemExit("Complete package inventory requires the verified organisation owner.")
+    names = set()
+    for page in range(1, 101):
+        packages = read(f"orgs/micelclaw/packages?package_type=container&per_page=100&page={page}")
+        if not isinstance(packages, list):
+            raise SystemExit("Invalid package inventory; no push performed.")
+        names.update(package["name"] for package in packages)
+        if len(packages) < 100:
+            return names
+    raise SystemExit("Package inventory exceeded its bound; no push performed.")
+
+
 def public_manifest(image, digest):
     repository = image.removeprefix("ghcr.io/")
     url = "https://ghcr.io/token?service=ghcr.io&scope=repository:" + repository + ":pull"
@@ -43,6 +76,8 @@ def public_manifest(image, digest):
 
 
 def main():
+    if os.geteuid() == 0:
+        raise SystemExit("Run as your normal publishing user, not through sudo or a root shell.")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("preparation", type=Path)
     args = parser.parse_args()
@@ -68,6 +103,10 @@ def main():
     secret = getpass.getpass("GHCR publishing credential (hidden): ")
     if not secret:
         raise SystemExit("No credential supplied; nothing published.")
+    try:
+        packages = publisher_packages(secret, preparation["publisher"])
+    except (urllib.error.URLError, ValueError, KeyError):
+        raise SystemExit("Could not verify publishing authority/package inventory; no push performed.")
     base = Path("/run/user") / str(os.getuid())
     if not base.is_dir():
         raise SystemExit("Private runtime directory is unavailable; no credential stored.")
@@ -87,10 +126,15 @@ def main():
                 check = subprocess.run(command + ["manifest", "inspect", "--verbose", target], capture_output=True, text=True)
                 if check.returncode == 0:
                     manifest = json.loads(check.stdout)
-                    config = manifest.get("SchemaV2Manifest", {}).get("config", {}).get("digest")
-                    if config != image["local_id"]:
+                    config = manifest.get("SchemaV2Manifest", manifest.get("OCIManifest", {})).get("config", {}).get("digest")
+                    descriptor = manifest.get("Descriptor", {}).get("digest")
+                    if image["local_id"] not in (config, descriptor):
                         raise SystemExit("A different release already exists; refusing overwrite: " + target)
                     existing[image["app"]] = manifest["Descriptor"]["digest"]
+                elif "office-" + image["app"] not in packages:
+                    # Complete owner inventory proved this package absent. An
+                    # unknown package may reject a pull-scope manifest request.
+                    pass
                 elif not any(reason in check.stderr.lower() for reason in ["manifest unknown", "no such manifest"]):
                     raise SystemExit("Could not prove absence of release tag; no image published: " + target)
             for image in images:
