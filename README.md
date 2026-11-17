@@ -16,16 +16,19 @@ workflows, credentials or data. Its native services are provided by Micelclaw
 Core; no n8n templates are included in this package.
 
 See [licences, modified sources and correction status](LICENSING.md) before
-redistributing Office. The initial Office release is still under correction and
-has not completed installed-product acceptance. The current discoverable
-entry is n8n. The four Office release assets remain public, with their
-licence correction notice, while corrected immutable packages are prepared;
-they will enter the catalogue after that correction.
+redistributing Office. The catalogue contains **Documents, Spreadsheets,
+Presentations and PDF 0.2.1**, plus the existing **n8n integration 0.1.1**.
+The four corrected Office packages, exact sources and public GHCR images are
+published; actual anonymous package downloads passed the official Registry
+integrity, archive, provenance and safety checks. Their older 0.2.0 assets
+remain unchanged. Installed-product acceptance is still pending; publication
+does not establish that a particular host has installed or activated an app.
 
 ## Installing
 
-In MicelHub → Registry, search, add the package to the local registry, then use
-Install. The existing installation authority and app permissions still apply.
+In a host with public Registry support loaded, use MicelHub → Registry: search,
+add the package to the local registry, then use Install. The existing
+installation authority and app permissions still apply.
 Local packages remain accessible if the public catalogue is unavailable.
 
 ## Adding a package
@@ -43,6 +46,9 @@ as the normal Windows/WSL user. Enter a classic GitHub token with
 Docker wincred helper stores it encrypted in Windows Credential Manager;
 `~/.config/micelclaw/registry-publisher/` contains only private configuration
 and status metadata. No token is saved in this repository or Core.
+At the local user's explicit request, `configure-publisher.py --visible` allows
+normal input echo in their own terminal. Do not record or share that terminal's
+contents. Hidden input remains the default.
 
 All subsequent local agent sessions run `tools/publish-images.py` directly,
 without asking the human to upload images or enter the credential again.

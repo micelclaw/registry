@@ -2,6 +2,114 @@
   "schema_version": 1,
   "packages": [
     {
+      "name": "documents",
+      "version": "0.2.1",
+      "display_name": "Documents",
+      "description": "Documents para Drive de Micelclaw",
+      "app_level": 3,
+      "license": "BUSL-1.1 AND MIT",
+      "keywords": [
+        "office",
+        "documents",
+        "docx"
+      ],
+      "repository": {
+        "url": "https://github.com/micelclaw/registry",
+        "revision": "2b2ab73da75944eff90b632f7f50e9b6337a568e"
+      },
+      "package": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/documents-0.2.1.claw",
+        "sha256": "c0d8ed0f27970e4df9d70541b3fdaae68c8eb06d4b92f67351163999854db5ba",
+        "bytes": 28245589
+      },
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/documents-0.2.1-source.tar.gz",
+        "sha256": "44d98bf8f88a01e01de12fe9b0743061a4d771e11050be01291b2c2c8ecbafef",
+        "bytes": 15482246
+      }
+    },
+    {
+      "name": "spreadsheets",
+      "version": "0.2.1",
+      "display_name": "Spreadsheets",
+      "description": "Spreadsheets para Drive de Micelclaw",
+      "app_level": 3,
+      "license": "AGPL-3.0-only",
+      "keywords": [
+        "office",
+        "spreadsheets",
+        "xlsx"
+      ],
+      "repository": {
+        "url": "https://github.com/micelclaw/registry",
+        "revision": "2b2ab73da75944eff90b632f7f50e9b6337a568e"
+      },
+      "package": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/spreadsheets-0.2.1.claw",
+        "sha256": "f6606e104d36d27841349bf87bdf9dd26f7712fea951ecf5ec9e1a63163b58d2",
+        "bytes": 27785405
+      },
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/spreadsheets-0.2.1-source.tar.gz",
+        "sha256": "41c229a4f55801dead03fe7ead778fd3871c2399b7bf7a145a158aa0af4e838f",
+        "bytes": 20523310
+      }
+    },
+    {
+      "name": "presentations",
+      "version": "0.2.1",
+      "display_name": "Presentations",
+      "description": "Presentations para Drive de Micelclaw",
+      "app_level": 3,
+      "license": "AGPL-3.0-only",
+      "keywords": [
+        "office",
+        "presentations",
+        "pptx"
+      ],
+      "repository": {
+        "url": "https://github.com/micelclaw/registry",
+        "revision": "2b2ab73da75944eff90b632f7f50e9b6337a568e"
+      },
+      "package": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/presentations-0.2.1.claw",
+        "sha256": "38ade11bf93ff16d89f726b0643e0c0e339dd4a1cd2056dae2c6cbbfd48a5567",
+        "bytes": 13285382
+      },
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/presentations-0.2.1-source.tar.gz",
+        "sha256": "1c809bfa2af038a91b45c50119ee1c491aac4a0e36449a5b9f66e86908b78f2c",
+        "bytes": 9035962
+      }
+    },
+    {
+      "name": "pdf",
+      "version": "0.2.1",
+      "display_name": "PDF",
+      "description": "PDF para Drive de Micelclaw",
+      "app_level": 3,
+      "license": "AGPL-3.0-only",
+      "keywords": [
+        "office",
+        "pdf",
+        "pdf"
+      ],
+      "repository": {
+        "url": "https://github.com/micelclaw/registry",
+        "revision": "2b2ab73da75944eff90b632f7f50e9b6337a568e"
+      },
+      "package": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/pdf-0.2.1.claw",
+        "sha256": "1a2ec195ba8bfd6b2dcd8cc0076ccba338ea60eeec9ef4eeedf4c8dcaebafd87",
+        "bytes": 92299811
+      },
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/pdf-0.2.1-source.tar.gz",
+        "sha256": "87ab702e24b3030648b840e1db6ffc72cdc0741f38b2c391843967a441bafe0e",
+        "bytes": 48304316
+      }
+    },
+    {
       "name": "n8n-automation",
       "version": "0.1.1",
       "display_name": "n8n",

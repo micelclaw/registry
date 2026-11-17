@@ -9,6 +9,7 @@ from pathlib import Path
 import tempfile
 from types import SimpleNamespace
 import unittest
+import urllib.error
 from unittest.mock import patch
 
 import registry_auth as auth
@@ -113,11 +114,26 @@ class SetupTests(unittest.TestCase):
             self.assertNotIn(self.secret, (self.directory / "profile.json").read_text())
             self.assertEqual(json.loads((self.directory / "docker/config.json").read_text()), {"credHelpers": {"ghcr.io": "wincred.exe"}})
 
+    def test_explicit_visible_input_uses_terminal_input_without_printing_secret(self):
+        with patch.object(setup, "ghcr_targets", return_value=set()), patch.object(setup.subprocess, "run", return_value=SimpleNamespace(returncode=0)), patch("builtins.input", return_value=self.secret) as visible, patch.object(setup.getpass, "getpass") as hidden:
+            setup.configure(SimpleNamespace(prepare=False, recover=False, visible=True))
+            visible.assert_called_once()
+            hidden.assert_not_called()
+            self.assertTrue(json.loads((self.directory / "profile.json").read_text())["configured"])
+
     def test_expiring_token_is_not_stored(self):
         self.response.headers["github-authentication-token-expiration"] = "2030-01-01"
         with patch.object(setup, "ghcr_targets", return_value=set()), patch.object(setup.subprocess, "run") as run:
             with self.assertRaisesRegex(SystemExit, "expiration date"):
                 self.run_setup()
+            run.assert_not_called()
+
+    def test_auth_failure_exposes_only_stage_and_status(self):
+        unsafe = urllib.error.HTTPError("https://api.github.com/user", 401, self.secret, {}, None)
+        with patch.object(setup, "ghcr_targets", return_value=set()), patch.object(setup.urllib.request, "build_opener", return_value=SimpleNamespace(open=lambda *args, **kwargs: (_ for _ in ()).throw(unsafe))), patch.object(setup.subprocess, "run") as run:
+            with self.assertRaisesRegex(SystemExit, "GitHub account verification failed \\(HTTP 401\\)") as caught:
+                self.run_setup()
+            self.assertNotIn(self.secret, str(caught.exception))
             run.assert_not_called()
 
     def test_interrupted_setup_recovers_without_new_login_or_prompt(self):

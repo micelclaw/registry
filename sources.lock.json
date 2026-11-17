@@ -30,7 +30,7 @@
     },
     {
       "path": "tools/configure-publisher.py",
-      "sha256": "b5e3eefdfa5dd084c5fdf77396fb2b7b05c5396c9638e330f530fea5b484383c"
+      "sha256": "f541c9e0646f1adbb52822c185e12ef6a162cf9e4cc72f1b56d479036543a44c"
     }
   ],
   "sources": [

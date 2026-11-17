@@ -6,19 +6,21 @@ to a package is not a statement that every licensing obligation has been met.
 
 ## Application sources and attribution
 
-The [2026.11.17 release](https://github.com/micelclaw/registry/releases/tag/2026.11.17)
+The [corrected 0.2.1 release](https://github.com/micelclaw/registry/releases/tag/2026.11.17-office-0.2.1)
 contains the modified application sources, build/packaging files, licences and
 third-party notices. Exact revisions, SHA-256 digests and sizes are recorded in
 [sources.lock.json](sources.lock.json). Sources are provided without a login or
 payment. The original private Git histories and Micelclaw Core/Dash are not
 included. Each `.claw` also contains its corresponding application source.
+The historical [0.2.0 release](https://github.com/micelclaw/registry/releases/tag/2026.11.17)
+and its hashes remain unchanged; the corrections below do not overwrite it.
 
 | Application | Licence scope | Modified source |
 | --- | --- | --- |
-| Documents 0.2.0 | Puter engine and its bounded adaptations: MIT. New Micelclaw wrapper/tools: BUSL-1.1. Third-party materials retain their licences. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/documents-0.2.0-source.tar.gz) |
-| Spreadsheets 0.2.0 | AGPL-3.0-only application and Micelclaw modifications; separately licensed dependencies/assets retain their terms. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/spreadsheets-0.2.0-source.tar.gz) |
-| Presentations 0.2.0 | AGPL-3.0-only application and Micelclaw modifications; separately licensed dependencies/assets retain their terms. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/presentations-0.2.0-source.tar.gz) |
-| PDF 0.2.0 | AGPL-3.0-only application and Micelclaw modifications; separately licensed dependencies/assets retain their terms. See the font-source correction below. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/pdf-0.2.0-source.tar.gz) |
+| Documents 0.2.1 | Puter engine and its bounded adaptations: MIT. New Micelclaw wrapper/tools: BUSL-1.1. Third-party materials retain their licences. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/documents-0.2.1-source.tar.gz) |
+| Spreadsheets 0.2.1 | AGPL-3.0-only application and Micelclaw modifications; separately licensed dependencies/assets retain their terms. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/spreadsheets-0.2.1-source.tar.gz) |
+| Presentations 0.2.1 | AGPL-3.0-only application and Micelclaw modifications; separately licensed dependencies/assets retain their terms. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/presentations-0.2.1-source.tar.gz) |
+| PDF 0.2.1 | AGPL-3.0-only application and Micelclaw modifications; separately licensed dependencies/assets retain their terms. See the font-source correction below. | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.1/pdf-0.2.1-source.tar.gz) |
 
 Upstream: Puter Technologies Inc.,
 [HeyPuter/everything at 2c593c5be59294690baf0a69b62fa64c1fd3628f](https://github.com/HeyPuter/everything/tree/2c593c5be59294690baf0a69b62fa64c1fd3628f).
@@ -37,6 +39,9 @@ every possible deployment or combined-work question.
 
 See [dated modification notices](licenses/office-0.2.0/MODIFICATIONS.md).
 Preserve original copyright and licence notices when redistributing.
+Each corrected source cut includes its dated `MODIFICATIONS.md` and a direct
+editor source offer. The build and image recipes retain that modification
+notice; these source/build checks do not establish installed-product acceptance.
 
 ## Correction: Liberation Sans source in PDF 0.2.0
 
@@ -72,6 +77,12 @@ upstream written offer is not automatically an offer made by Micelclaw.
 Each Office package contains actual binary versions, Debian copyright notices,
 common licences, Node notices and an inventory bound to its image digest.
 The npm inventories alone do not cover Chromium, LibreOffice or the OS.
+The four 0.2.1 image inventories were extracted from their actual built images:
+all 393 Debian binary-package versions per image match the retained 0.2.0
+inventories. The source assets below therefore also cover those exact versions;
+no new operating-system source version is inferred from an image tag. A source
+archive's historical runtime inventory identifies its earlier image; the final
+installable package records its own actual image digest separately.
 
 [Exact runtime source index](licenses/office-0.2.0/runtime-source-index.json)
 maps the four images' Debian binary packages to source packages/versions,
@@ -124,17 +135,22 @@ unlicensed packages.
 A complete original Joyent/string_decoder MIT comment was also recovered from
 the exact `@pdf-lib/fontkit` bundle. It was absent from the inspected compiled
 browser UI and browser notice file. The [verbatim recovered notice](licenses/office-0.2.0/fontkit-string-decoder-MIT.txt)
-is supplied here; incorporating it into the application notice generator and
-new package is pending. It does not replace the fork-wide licence declaration.
+is supplied here. The corrected 0.2.1 source generator and compiled browser UI
+now include that comment verbatim. It does not replace the fork-wide licence
+declaration or resolve the separate attribution uncertainties above.
 
 The distribution corrections apply to the images already public, independently
 of installed-product acceptance. Runtime-source retention and public access for
 the inventoried Debian, Node and Liberation archives are now verified. Remaining
-work: incorporate corrected font/dated notices in a new immutable package and
-make the exact modified-source offer prominent in the served
-editor as well as the Micelclaw host. Host UI code prepared locally is not
-evidence that an installed editor already displays it. Existing 0.2.0 assets
-remain identifiable by their original hashes during this correction.
+work includes installed-product acceptance. The immutable 0.2.1 packages and
+images are published; actual anonymous package downloads passed the official
+Registry integrity, archive, provenance and safety checks. Corrected
+editable-font/dated notices and direct source offers are present in those
+packages, the four published source cuts and verified builds; the Micelclaw
+host source-offer UI also passed compiled UI checks. These results are not
+evidence that an installed editor already displays it. The font transformation
+recipe and older attribution uncertainties remain as described above. Existing
+0.2.0 assets remain identifiable by their original hashes during this correction.
 
 ## n8n integration
 

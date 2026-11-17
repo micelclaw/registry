@@ -14,6 +14,11 @@ history, credentials or user data through this repository.
   once in a local terminal to enter a classic `write:packages` token with
   **No expiration** at its hidden prompt. Never request or paste its value in
   chat, argv, logs, environment files, repository files or reports.
+  Víctor explicitly requested an optional visible LOCAL terminal input mode:
+  `python3 tools/configure-publisher.py --visible`. It uses normal terminal
+  echo only; never capture that terminal or copy its contents into chat/logs.
+  Hidden input remains the default. Agents never enter/read real values through
+  an execution tool or request their value in chat.
 - After configuration, the agent runs
   `python3 tools/publish-images.py /absolute/path/to/reviewed/images.json`.
   The publisher authenticates automatically through the shared profile. Do not

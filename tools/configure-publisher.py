@@ -14,6 +14,7 @@ from pathlib import Path
 import subprocess
 import sys
 import urllib.request
+import urllib.error
 import uuid
 import warnings
 import fcntl
@@ -151,8 +152,12 @@ def configure(args):
         print("Create/select a GitHub CLASSIC token with write:packages and No expiration:")
         print("https://github.com/settings/tokens/new?scopes=write:packages&description=Micelclaw%20Registry%20Publisher")
         print("It will be stored encrypted in Windows Credential Manager for future sessions. No packages are uploaded here.")
-        warnings.simplefilter("error", getpass.GetPassWarning)
-        secret = getpass.getpass("Publication credential (hidden, never paste in chat): ")
+        if getattr(args, "visible", False):
+            print("Input is VISIBLE in this local terminal at your request. Do not share its contents.")
+            secret = input("Publication credential (visible, local terminal only): ")
+        else:
+            warnings.simplefilter("error", getpass.GetPassWarning)
+            secret = getpass.getpass("Publication credential (hidden, never paste in chat): ")
     if not secret:
         fail("No credential supplied.")
     class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -160,6 +165,7 @@ def configure(args):
             return None
     request = urllib.request.Request("https://api.github.com/user", headers={"Authorization": "Bearer " + secret, "Accept": "application/vnd.github+json"})
     attempted_login = False
+    stage = "GitHub account verification"
     try:
         with urllib.request.build_opener(NoRedirect()).open(request, timeout=30) as response:
             account = json.load(response)
@@ -172,6 +178,7 @@ def configure(args):
         spec = spec_from_file_location("reviewed_publisher", Path(__file__).with_name("publish-images.py"))
         publisher = module_from_spec(spec)
         spec.loader.exec_module(publisher)
+        stage = "GitHub organisation/package authority verification"
         publisher.publisher_packages(secret, profile["username"])
         if not args.recover:
             # Recheck after the human prompt/API verification, immediately before
@@ -181,6 +188,7 @@ def configure(args):
             profile["pending_setup"] = True
             write_private(PROFILE_DIR / "profile.json", profile)
             attempted_login = True
+            stage = "Windows credential storage via Docker"
             login = subprocess.run(command + ["login", "ghcr.io", "--username", profile["username"], "--password-stdin"], input=secret + "\n", capture_output=True, text=True, env=env)
             if login.returncode:
                 fail("Credential storage/login failed; diagnostic details are not printed.")
@@ -192,6 +200,7 @@ def configure(args):
             write_private(PROFILE_DIR / "docker" / "config.json", {"credHelpers": {"ghcr.io": "wincred.exe"}})
             fail("Unexpected credential persistence rejected; the publication config was cleared of auth data.")
         write_private(PROFILE_DIR / "docker" / "config.json", {"credHelpers": {"ghcr.io": "wincred.exe"}})
+        stage = "Publication profile finalisation"
         profile.update(configured=True, pending_setup=False, no_expiration_header=True, verified_scopes=sorted(scopes))
         write_private(PROFILE_DIR / "profile.json", profile)
     except BaseException as error:
@@ -202,7 +211,15 @@ def configure(args):
             write_private(PROFILE_DIR / "profile.json", profile)
         if isinstance(error, (SystemExit, KeyboardInterrupt)):
             raise
-        fail("Could not verify/store publication authority; no secret details are printed. Interrupted recovery remains available with --recover.")
+        if isinstance(error, urllib.error.HTTPError):
+            reason = "HTTP " + str(error.code)
+        elif isinstance(error, FileNotFoundError):
+            reason = "required local executable/file unavailable"
+        elif isinstance(error, urllib.error.URLError):
+            reason = "network/TLS connection failed"
+        else:
+            reason = type(error).__name__
+        fail(stage + " failed (" + reason + "). No credential details printed. Interrupted recovery is available with --recover.")
     finally:
         del secret
     print("Publication authentication configured for all sessions of this user. No upload, Core change or runtime download credential configured.")
@@ -215,6 +232,7 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--prepare", action="store_true")
     mode.add_argument("--recover", action="store_true")
+    parser.add_argument("--visible", action="store_true", help="Show input in your own local terminal, at your explicit request; never share its contents.")
     args = parser.parse_args()
     try:
         profile_directories(create=True)
