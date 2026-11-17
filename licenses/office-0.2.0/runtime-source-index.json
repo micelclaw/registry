@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verification_scope": "All Debian source descriptor/archive bytes match exact recorded SHA-256 and byte length; retained locally in deterministic shards. Public availability must be verified separately.",
+  "verification_scope": "Exact Debian source-package descriptors and all 797 source component files verified by SHA-256/byte length and retained in deterministic shards. All six supplementary source assets (four Debian shards, Liberation editable source, Node source) were fully downloaded anonymously from this release and matched SHA-256/byte length. This does not close application notice/source-offer corrections or constitute a legal opinion.",
   "images": [
     {
       "name": "documents",
@@ -19686,22 +19686,46 @@
     {
       "filename": "office-0.2.0-debian-sources-01.tar",
       "bytes": 1068881920,
-      "sha256": "fefbb11eb68f6394a2b4b3b818968876665ac7b049df971d4d2ec46b9c8061de"
+      "sha256": "fefbb11eb68f6394a2b4b3b818968876665ac7b049df971d4d2ec46b9c8061de",
+      "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-01.tar",
+      "anonymous_bytes_verified": true
     },
     {
       "filename": "office-0.2.0-debian-sources-02.tar",
       "bytes": 1068062720,
-      "sha256": "a0b4512e7bb3ce6d036510ccf62810c654edf1289e62333093144ab6df279b32"
+      "sha256": "a0b4512e7bb3ce6d036510ccf62810c654edf1289e62333093144ab6df279b32",
+      "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-02.tar",
+      "anonymous_bytes_verified": true
     },
     {
       "filename": "office-0.2.0-debian-sources-03.tar",
       "bytes": 1066332160,
-      "sha256": "545812323702ae470d6d3543accd49032999ab6796d8c4accd136ecfe02069ac"
+      "sha256": "545812323702ae470d6d3543accd49032999ab6796d8c4accd136ecfe02069ac",
+      "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-03.tar",
+      "anonymous_bytes_verified": true
     },
     {
       "filename": "office-0.2.0-debian-sources-04.tar",
       "bytes": 184125440,
-      "sha256": "fdc4a62e6cde6bbc71de5b42f96a0346d4bb7ac2d41e31535f7b47fc44d854af"
+      "sha256": "fdc4a62e6cde6bbc71de5b42f96a0346d4bb7ac2d41e31535f7b47fc44d854af",
+      "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-04.tar",
+      "anonymous_bytes_verified": true
+    }
+  ],
+  "additional_sources": [
+    {
+      "filename": "fonts-liberation_1.07.4.orig.tar.gz",
+      "bytes": 2937949,
+      "sha256": "ad98b7498dc2992f7f0868f79b65ce4a720a3acdb63ab3f1f1cb6881117a5406",
+      "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/fonts-liberation_1.07.4.orig.tar.gz",
+      "anonymous_bytes_verified": true
+    },
+    {
+      "filename": "node-v22.23.5.tar.xz",
+      "bytes": 50529596,
+      "sha256": "6cce7c58bf058700c643944903d60a325e8c9ceede1f5c2c088b435f2ada091a",
+      "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/node-v22.23.5.tar.xz",
+      "anonymous_bytes_verified": true
     }
   ]
 }

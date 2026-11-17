@@ -51,7 +51,8 @@ The actual upstream Liberation Fonts 1.07.4 source, as retained by Debian, is
 `fonts-liberation_1.07.4.orig.tar.gz`: 2,937,949 bytes, SHA-256
 `ad98b7498dc2992f7f0868f79b65ce4a720a3acdb63ab3f1f1cb6881117a5406`.
 It contains 16 SFD files, Makefile, build scripts and original licences.
-[Upstream source archive](https://deb.debian.org/debian/pool/main/f/fonts-liberation/fonts-liberation_1.07.4.orig.tar.gz).
+[Download retained editable source](https://github.com/micelclaw/registry/releases/download/2026.11.17/fonts-liberation_1.07.4.orig.tar.gz);
+[upstream source archive](https://deb.debian.org/debian/pool/main/f/fonts-liberation/fonts-liberation_1.07.4.orig.tar.gz).
 
 The four Liberation Sans TTFs are supplied by Mozilla PDF.js 6.3.289,
 [revision 1c8020a7d4e43668ac287a3ecf9a8dbea17e4c56](https://github.com/mozilla/pdf.js/tree/1c8020a7d4e43668ac287a3ecf9a8dbea17e4c56/external/standard_fonts),
@@ -78,13 +79,32 @@ complete `.dsc` components and SHA-256 checksums. Read its verification fields:
 locating a file or verifying its descriptor is distinct from verifying its
 archive bytes, retaining a copy and checking anonymous public download.
 Third-party links alone are not a guarantee of continued availability.
+All 797 files across 250 exact Debian source versions have now been retained,
+SHA-256 checked and published in these four source shards. Complete anonymous
+downloads of each shard matched the recorded SHA-256 and byte length.
+
+| Retained source shard | Size (bytes) | Download |
+| --- | ---: | --- |
+| office-0.2.0-debian-sources-01.tar | 1068881920 | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-01.tar) |
+| office-0.2.0-debian-sources-02.tar | 1068062720 | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-02.tar) |
+| office-0.2.0-debian-sources-03.tar | 1066332160 | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-03.tar) |
+| office-0.2.0-debian-sources-04.tar | 184125440 | [Download](https://github.com/micelclaw/registry/releases/download/2026.11.17/office-0.2.0-debian-sources-04.tar) |
+
+Use the index to locate each `.dsc` and every associated component. Inside a
+shard each file is at its `retained_path`; place components of one source
+package together under their original filenames before using Debian source
+tools. Archives contain source and build instructions; they are not executed
+as part of verification. Keep the source assets available while distributing
+the corresponding binaries; do not delete them as ordinary build temporaries.
 
 Node 22.23.5 source is available from
 [the official distribution](https://nodejs.org/dist/v22.23.5/), alongside its
 SHA-256 list. The Node source tar.xz checksum is
 `6cce7c58bf058700c643944903d60a325e8c9ceede1f5c2c088b435f2ada091a`.
-Runtime source copies and their public availability are being completed; no
-three-year source offer or blanket compliance conclusion is asserted here.
+[Download the retained Node source](https://github.com/micelclaw/registry/releases/download/2026.11.17/node-v22.23.5.tar.xz).
+The Node and Liberation source assets also passed complete anonymous downloads
+and exact SHA-256 checks. No three-year source offer or blanket compliance
+conclusion is asserted here.
 
 ## Dependency review and remaining gates
 
@@ -101,10 +121,17 @@ text do not independently establish notice completeness. The older `binary`,
 These require further upstream attribution verification, not relabelling as
 unlicensed packages.
 
+A complete original Joyent/string_decoder MIT comment was also recovered from
+the exact `@pdf-lib/fontkit` bundle. It was absent from the inspected compiled
+browser UI and browser notice file. The [verbatim recovered notice](licenses/office-0.2.0/fontkit-string-decoder-MIT.txt)
+is supplied here; incorporating it into the application notice generator and
+new package is pending. It does not replace the fork-wide licence declaration.
+
 The distribution corrections apply to the images already public, independently
-of installed-product acceptance: complete runtime-source retention and public
-access, incorporate the corrected font/dated notices in a new immutable
-package, and make the exact modified-source offer prominent in the served
+of installed-product acceptance. Runtime-source retention and public access for
+the inventoried Debian, Node and Liberation archives are now verified. Remaining
+work: incorporate corrected font/dated notices in a new immutable package and
+make the exact modified-source offer prominent in the served
 editor as well as the Micelclaw host. Host UI code prepared locally is not
 evidence that an installed editor already displays it. Existing 0.2.0 assets
 remain identifiable by their original hashes during this correction.
