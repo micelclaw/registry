@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/micelclaw/registry",
+  "release_tag": "2026.11.17",
+  "recipes": [
+    {
+      "path": "tools/package-office.mjs",
+      "sha256": "14a7253ded0fd038b94eb210e65da05362a0d1bdaf3d30083aaf099fc205901a"
+    },
+    {
+      "path": "tools/prepare-sources.mjs",
+      "sha256": "33d3f893eb431273ceed0d71fdef4a2cb5f6245bc373102c50aa1819c9648bfe"
+    },
+    {
+      "path": "tools/publish-images.py",
+      "sha256": "6521e3c61b714c3c6403531d21d05994935dabb3b3a9bfd996641ec4adc432a6"
+    }
+  ],
+  "sources": [
+    {
+      "name": "documents",
+      "version": "0.2.0",
+      "source_revision": "8d9f98fc8d16239d0970644c5facac589c781043",
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/documents-0.2.0-source.tar.gz",
+        "sha256": "df31af20dc9a2c0b7dde937f31e6232fa13138635fb35852eec737c3c6741142",
+        "bytes": 15479854
+      },
+      "export": "Exact reviewed git archive; no Git metadata or history."
+    },
+    {
+      "name": "spreadsheets",
+      "version": "0.2.0",
+      "source_revision": "5a731d57aa9373d6c65ca8dd9a8b583187138b59",
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/spreadsheets-0.2.0-source.tar.gz",
+        "sha256": "469695e661cfb05458d404f20294e290e92f1c4466446ab941c7cf4356f23b40",
+        "bytes": 20520631
+      },
+      "export": "Exact reviewed git archive; no Git metadata or history."
+    },
+    {
+      "name": "presentations",
+      "version": "0.2.0",
+      "source_revision": "bf57d10a59d682e1189ae03bf40962ec127219f8",
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/presentations-0.2.0-source.tar.gz",
+        "sha256": "84a084ec5000949990732c6a2f88a918998f7d4b1dcb0ff8bde5f71ba3330cea",
+        "bytes": 9033819
+      },
+      "export": "Exact reviewed git archive; no Git metadata or history."
+    },
+    {
+      "name": "pdf",
+      "version": "0.2.0",
+      "source_revision": "b2ef57053a0ee06c223a70f0e264baa501655f34",
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/pdf-0.2.0-source.tar.gz",
+        "sha256": "2bda28a72dd28a1f298ea038a80f4bd99c90257329bbb94037eaddc047a5e443",
+        "bytes": 45364909
+      },
+      "export": "Exact reviewed git archive; no Git metadata or history."
+    },
+    {
+      "name": "n8n-automation",
+      "version": "0.1.1",
+      "source": {
+        "url": "https://github.com/micelclaw/registry/releases/download/2026.11.17/n8n-automation-0.1.1-source.tar.gz",
+        "sha256": "b9229b9d85f3423ef8add7cf533c995c1a15abcfe84be565c0496fb67fb48117",
+        "bytes": 74034
+      },
+      "export": "Allowlist: launcher, ui/module.tsx, SKILL.md, references, NOTICES, licences, README, manifest template. No workflows/templates/runtime data. Removed local-path comment; public package version/licence metadata generated separately."
+    }
+  ]
+}
