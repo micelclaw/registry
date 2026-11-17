@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "packages": [
+    {
+      "name": "documents",
+      "version": "0.2.1",
+      "package_sha256": "c0d8ed0f27970e4df9d70541b3fdaae68c8eb06d4b92f67351163999854db5ba",
+      "author": "Micelclaw \u00b7 Puter Technologies Inc.",
+      "origin": "Micelclaw",
+      "tier_required": "free",
+      "icon": "FileText",
+      "icon_kind": "lucide",
+      "color": "#3b82f6",
+      "tags": [
+        "verified",
+        "featured"
+      ]
+    },
+    {
+      "name": "spreadsheets",
+      "version": "0.2.1",
+      "package_sha256": "f6606e104d36d27841349bf87bdf9dd26f7712fea951ecf5ec9e1a63163b58d2",
+      "author": "Micelclaw \u00b7 Puter Technologies Inc.",
+      "origin": "Micelclaw",
+      "tier_required": "free",
+      "icon": "Table2",
+      "icon_kind": "lucide",
+      "color": "#22c55e",
+      "tags": [
+        "verified",
+        "featured"
+      ]
+    },
+    {
+      "name": "presentations",
+      "version": "0.2.1",
+      "package_sha256": "38ade11bf93ff16d89f726b0643e0c0e339dd4a1cd2056dae2c6cbbfd48a5567",
+      "author": "Micelclaw \u00b7 Puter Technologies Inc.",
+      "origin": "Micelclaw",
+      "tier_required": "free",
+      "icon": "Presentation",
+      "icon_kind": "lucide",
+      "color": "#eab308",
+      "tags": [
+        "verified",
+        "featured"
+      ]
+    },
+    {
+      "name": "pdf",
+      "version": "0.2.1",
+      "package_sha256": "1a2ec195ba8bfd6b2dcd8cc0076ccba338ea60eeec9ef4eeedf4c8dcaebafd87",
+      "author": "Micelclaw \u00b7 Puter Technologies Inc.",
+      "origin": "Micelclaw",
+      "tier_required": "free",
+      "icon": "FileImage",
+      "icon_kind": "lucide",
+      "color": "#ef4444",
+      "tags": [
+        "verified",
+        "featured"
+      ]
+    },
+    {
+      "name": "n8n-automation",
+      "version": "0.1.1",
+      "package_sha256": "217fad4458d1fb4a6f122c7e544abdeafe90ec4aa18d9ba3c0efb3ee5010b82d",
+      "author": "micelclaw",
+      "origin": "Micelclaw",
+      "tier_required": "free",
+      "icon": "Waypoints",
+      "icon_kind": "lucide",
+      "color": "#ea4b71",
+      "tags": [
+        "verified",
+        "featured"
+      ]
+    }
+  ]
+}
