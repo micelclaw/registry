@@ -4,12 +4,30 @@ Review and correction notice: **17 November 2026**. This page distinguishes
 verified provenance from outstanding distribution requirements. Public access
 to a package is not a statement that every licensing obligation has been met.
 
+## Office 0.2.2 provenance notice
+
+[Office 0.2.2](https://github.com/micelclaw/registry/releases/tag/2026.11.17-office-0.2.2)
+provides the current four exact application sources and packages. The current
+[sources.lock.json](sources.lock.json) binds their real revisions, hashes and
+public images; licensing scopes and outstanding qualifications below remain.
+
+**Metadata erratum:** two informational fields in each package's
+`runtime-notices/manifest.json` (`registry_revision` and `source_revision`)
+inadvertently retain 0.2.1 values. They are obsolete and must not be used to
+attribute 0.2.2 code or images. The authoritative `SOURCE.json`, package manifest,
+embedded corresponding-source archive and source lock contain the correct
+0.2.2 bindings. [Hash-bound corrections for all four packages](https://github.com/micelclaw/registry/releases/download/2026.11.17-office-0.2.2/ERRATA-PROVENANCE.json)
+identify the obsolete and correct values explicitly. Published package bytes
+remain immutable. Inventories were extracted from the actual new images;
+the already reviewed binary versions and notices are unchanged. This notice
+is not a compliance verdict or installed-product acceptance.
+
 ## Application sources and attribution
 
 The [corrected 0.2.1 release](https://github.com/micelclaw/registry/releases/tag/2026.11.17-office-0.2.1)
 contains the modified application sources, build/packaging files, licences and
 third-party notices. Exact revisions, SHA-256 digests and sizes are recorded in
-[sources.lock.json](sources.lock.json). Sources are provided without a login or
+[the immutable 0.2.1 source lock](https://github.com/micelclaw/registry/blob/2b2ab73da75944eff90b632f7f50e9b6337a568e/sources.lock.json). Sources are provided without a login or
 payment. The original private Git histories and Micelclaw Core/Dash are not
 included. Each `.claw` also contains its corresponding application source.
 The historical [0.2.0 release](https://github.com/micelclaw/registry/releases/tag/2026.11.17)
