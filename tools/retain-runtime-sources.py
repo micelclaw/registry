@@ -8,6 +8,7 @@ import concurrent.futures
 import hashlib
 import json
 from pathlib import Path
+import re
 import tarfile
 import urllib.request
 
@@ -21,12 +22,18 @@ def digest_file(path):
 
 
 def retain(entry, destination):
+    if not re.fullmatch(r"[a-f0-9]{64}", entry["sha256"]):
+        raise ValueError("Invalid source SHA-256")
+    if not re.fullmatch(r"[A-Za-z0-9.+_~:-]+", entry["filename"]) or entry["filename"] in {".", ".."}:
+        raise ValueError("Unsafe source filename")
+    if type(entry["bytes"]) is not int or not 0 < entry["bytes"] <= 1024 ** 3:
+        raise ValueError("Invalid source byte limit")
+    if not re.fullmatch(r"https://snapshot\.debian\.org/file/[a-f0-9]{40}", entry["url"]):
+        raise ValueError("Unexpected upstream source host")
     target = destination / entry["sha256"] / entry["filename"]
     target.parent.mkdir(parents=True, exist_ok=True)
     if target.exists() and target.stat().st_size == entry["bytes"] and digest_file(target) == entry["sha256"]:
         return target
-    if not entry["url"].startswith("https://snapshot.debian.org/file/"):
-        raise ValueError("Unexpected upstream source host")
     partial = target.with_name(target.name + ".partial")
     try:
         digest = hashlib.sha256()
