@@ -80,5 +80,5 @@
       "export": "Allowlist: launcher, ui/module.tsx, SKILL.md, references, NOTICES, licences, README, manifest template. No workflows/templates/runtime data. Removed local-path comment; public package version/licence metadata generated separately."
     }
   ],
-  "core_packager_sha256": "ee93dce29f92116f439406419b7133ab0229701184f86eed22e6e4b4c9570e6b"
+  "core_packager_sha256": "261fba880c4d21caf62bb939d3b672f362d40e0ca95888eefb92075e6a3fe124"
 }
