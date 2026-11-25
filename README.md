@@ -26,10 +26,20 @@ does not establish that a particular host has installed or activated an app.
 
 ## Installing
 
-In a host with public Registry support loaded, use MicelHub → Registry: search,
-add the package to the local registry, then use Install. The existing
-installation authority and app permissions still apply.
-Local packages remain accessible if the public catalogue is unavailable.
+The redesigned MicelHub separates **Registry → Download**, **Available → Install**
+and **Installed → Uninstall**. Hosts need the corresponding Core and Dash changes
+loaded to use that flow; downloading does not activate an application. Older
+hosts retain their existing local-registry installation flow. The existing
+installation authority and app permissions still apply. Local packages remain
+accessible if the public catalogue is unavailable.
+
+`catalog-display.json` is an optional companion for application icons, publisher,
+plan and editorial badges, keyed by the exact package name and version. Older
+hosts keep reading the unchanged `catalog.json`; companion errors must not block
+downloads. It does not replace package integrity or safety checks. To refresh it
+from the exact reviewed application manifests, run
+`node tools/update-catalog-display.mjs CORE_DIRECTORY` (`--check` validates without
+writing). Never repack an immutable release merely to change presentation metadata.
 
 ## Adding a package
 
